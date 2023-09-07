@@ -364,11 +364,12 @@ cmp.setup {
     ['<C-p>'] = cmp.config.disable,
     ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
     ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(-4),
     ['<C-Space>'] = cmp.mapping.complete {},
     ['<C-e>'] = cmp.mapping.abort(), -- close completion window
-    ['<CR>'] = cmp.mapping.confirm {
+    -- ['<CR>'] = cmp.mapping.confirm { -- this was being annoying when you just wanted to CR but completion window was open
+    ['<C-a>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
