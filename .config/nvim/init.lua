@@ -186,10 +186,7 @@ require('lazy').setup({
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       require('treesj').setup({ use_default_keymaps = false })
-    end,
-    on_attach = function()
-      vim.keymap.set('n', '<leader>m', require('treesj').toggle, { desc = 'Toggle block split' })
-    end,
+    end
   },
 
   {
@@ -201,6 +198,8 @@ require('lazy').setup({
 
   require 'patriuk.plugins.autoformat',
 }, {})
+
+vim.keymap.set('n', '<leader>m', require('treesj').toggle, { desc = 'Toggle block split' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
