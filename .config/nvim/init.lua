@@ -1,5 +1,6 @@
 require('patriuk.remap') -- remaps leader - must happen b4 plugins are required
 require('patriuk.options')
+require('patriuk.plugins.cmp')
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -368,8 +369,7 @@ cmp.setup {
     ['<C-f>'] = cmp.mapping.scroll_docs(-4),
     ['<C-Space>'] = cmp.mapping.complete {},
     ['<C-e>'] = cmp.mapping.abort(), -- close completion window
-    -- ['<CR>'] = cmp.mapping.confirm { -- this was being annoying when you just wanted to CR but completion window was open
-    ['<C-a>'] = cmp.mapping.confirm {
+    ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
@@ -391,18 +391,18 @@ cmp.setup {
   sources = {
     {
       name = 'nvim_lsp',
-      entry_filter = function(entry) -- ignore text suggestions - both nvim_lsp and buffer
-        return require('cmp').lsp.CompletionItemKind.Text ~= entry:get_kind()
-      end,
+      -- entry_filter = function(entry) -- ignore text suggestions - both nvim_lsp and buffer
+      --   return require('cmp').lsp.CompletionItemKind.Text ~= entry:get_kind()
+      -- end,
     },
     {
       name = 'luasnip',
     },
     {
       name = 'buffer',
-      entry_filter = function(entry) -- ignore text suggestions - both nvim_lsp and buffer
-        return require('cmp').lsp.CompletionItemKind.Text ~= entry:get_kind()
-      end,
+      -- entry_filter = function(entry) -- ignore text suggestions - both nvim_lsp and buffer
+      --   return require('cmp').lsp.CompletionItemKind.Text ~= entry:get_kind()
+      -- end,
       -- option = {
       --   keyword_length = 5,
       -- }
